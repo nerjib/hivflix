@@ -30,8 +30,8 @@ router.post('/', async (req, res) => {
       status: 'success',
       data: {
         token,
-        userId: rows[0].id,
-        emailStatus: rows[0].email_status
+        userId: rows[0].userid,
+        emailStatus: rows[0].emailstatus
       },
     };
 
