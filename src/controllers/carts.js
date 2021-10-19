@@ -38,11 +38,11 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     
     const createUser = `INSERT INTO
-    carts (user_id,book_id,created_at)
+    carts (user_id,movie_id,created_at)
     VALUES ($1,$2,$3) RETURNING *`;  
   const values = [
   req.body.user_id,
-  req.body.book_id,
+  req.body.movie_id,
   moment(new Date())
   ];
   try {
@@ -53,7 +53,7 @@ router.post('/', async (req, res) => {
     data: {
       message: 'book added to cart successfully​',
       User_id: rows[0].user_id,
-      Book_id: rows[0].book_id,
+      Book_id: rows[0].movie_id,
     },
   };
   return res.status(201).send(data);
@@ -63,13 +63,13 @@ router.post('/', async (req, res) => {
   
   });
 
-  router.delete('/remove/:bookid/:userid', async (req, res) => {
+  router.delete('/remove/:movieid/:userid', async (req, res) => {
     
     const createUser = `DELETE  FROM
-    carts where user_id = $1 and book_id = $2`;  
+    carts where user_id = $1 and movie_id = $2`;  
   const values = [
   req.params.userid,
-  req.params.bookid,
+  req.params.movieid,
   ];
   try {
   const { rows } = await db.query(createUser, values);
