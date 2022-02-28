@@ -18,6 +18,8 @@ const Category = require('./src/controllers/categories')
 const WishLists = require('./src/controllers/whishlists')
 const Ratings = require('./src/controllers/ratings')
 const Reviews = require('./src/controllers/reviews')
+const Ads = require('./src/controllers/ads')
+
 
 //const upload = require('./src/controllers/multer')
 //const cloudinary = require('./src/controllers/cloudinary')
@@ -99,6 +101,8 @@ app.use('/api/v1/category',Auth.verifyToken, Category)
 app.use('/api/v1/wishlists',Auth.verifyToken, WishLists)
 app.use('/api/v1/ratings', Auth.verifyToken,Ratings)
 app.use('/api/v1/reviews', Auth.verifyToken,Reviews)
+app.use('/api/v1/ads',Ads)
+
 
 
 
