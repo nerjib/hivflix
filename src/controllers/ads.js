@@ -90,8 +90,8 @@ router.post('/', upload.array('file'),  async(req, res) => {
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
     
     const createUser = `INSERT INTO
-    adverts(title,user_id,description,img_url,category_id,price,created_at)
-    VALUES ($1, $2,$3,$4,$5,$6,$7) RETURNING *`;  
+    adverts(title,user_id,description,img_url,category_id,price,created_at, phone_no, location)
+    VALUES ($1, $2,$3,$4,$5,$6,$7,$8,$9) RETURNING *`;  
   const values = [
   req.body.title,
   req.body.user_id,
@@ -99,7 +99,9 @@ router.post('/', upload.array('file'),  async(req, res) => {
   urls[0],
   req.body.category_id,
   req.body.price,
-  moment(new Date())
+  moment(new Date()),
+  req.body.phone_no,
+  req.body.location
   ];
   try {
   const { rows } = await db.query(createUser, values);
