@@ -101,7 +101,7 @@ app.use('/api/v1/category',Auth.verifyToken, Category)
 app.use('/api/v1/wishlists',Auth.verifyToken, WishLists)
 app.use('/api/v1/ratings', Auth.verifyToken,Ratings)
 app.use('/api/v1/reviews', Auth.verifyToken,Reviews)
-app.use('/api/v1/ads',Ads)
+//app.use('/api/v1/ads',Ads)
 
 
 
