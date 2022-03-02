@@ -154,7 +154,7 @@ router.post('/story', upload.array('file'),  async(req, res) => {
   });
  
 
-  router.post('/chapter', upload.array('file'),  async(req, res) => {
+  router.post('/chapter',  async(req, res) => {
     
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
     
