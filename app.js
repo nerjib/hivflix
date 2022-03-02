@@ -19,6 +19,7 @@ const WishLists = require('./src/controllers/whishlists')
 const Ratings = require('./src/controllers/ratings')
 const Reviews = require('./src/controllers/reviews')
 const Ads = require('./src/controllers/ads')
+const Stories = require('./src/controllers/stories')
 
 
 //const upload = require('./src/controllers/multer')
@@ -102,6 +103,8 @@ app.use('/api/v1/wishlists',Auth.verifyToken, WishLists)
 app.use('/api/v1/ratings', Auth.verifyToken,Ratings)
 app.use('/api/v1/reviews', Auth.verifyToken,Reviews)
 app.use('/api/v1/ads',Ads)
+app.use('/api/v1/stories',Stories)
+
 
 
 
