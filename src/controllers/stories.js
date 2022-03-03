@@ -55,6 +55,19 @@ router.get('/:id', async (req, res) => {
       return res.status(400).send(error);
     }
   });
+  router.get('/chapterlist/:id', async (req, res) => {
+    const text = 'SELECT id,storyid,chapter FROM chapters WHERE storyid = $1 order by chapter asc';
+    // console.log(req.params.id);
+    try {
+      const { rows } = await db.query(text, [req.params.id]);
+      if (!rows[0]) {
+        return res.status(404).send({ message: 'User not found' });
+      }
+      return res.status(200).send(rows);
+    } catch (error) {
+      return res.status(400).send(error);
+    }
+  });
 
   router.get('/chapter/:id', async (req, res) => {
     const text = 'SELECT * FROM chapters WHERE id=$1';
