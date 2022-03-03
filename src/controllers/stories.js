@@ -15,7 +15,7 @@ dotenv.config();
 
 
 router.get('/', async (req, res) => {
-    const getAllQ = 'SELECT * FROM stories';
+    const getAllQ = 'SELECT * FROM stories left join users on stories.author=users.userid left join stories.category=categories.id';
     try {
       // const { rows } = qr.query(getAllQ);
       const { rows } = await db.query(getAllQ);
