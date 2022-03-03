@@ -56,7 +56,7 @@ router.get('/:id', async (req, res) => {
     }
   });
   router.get('/chapterlist/:id', async (req, res) => {
-    const text = 'SELECT id,storyid,chapter FROM chapters WHERE storyid = $1 order by chapter asc';
+    const text = 'SELECT id,storyid,chapter,subject FROM chapters WHERE storyid = $1 order by chapter asc';
     // console.log(req.params.id);
     try {
       const { rows } = await db.query(text, [req.params.id]);
