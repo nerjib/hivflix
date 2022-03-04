@@ -82,7 +82,6 @@ router.get('/:id', async (req, res) => {
       return res.status(400).send(error);
     }
   });
-
   router.get('/author/:id', async (req, res) => {
     const text = 'SELECT * FROM movies WHERE author_id = $1';
     // console.log(req.params.id);
