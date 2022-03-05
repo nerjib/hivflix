@@ -29,7 +29,6 @@ router.get('/', async (req, res) => {
   });
 
   
-
 router.get('/:id', async (req, res) => {
     const text = 'SELECT * FROM stories left join chapters on stories.id=chapters.storyid WHERE stories.id = $1';
     // console.log(req.params.id);
