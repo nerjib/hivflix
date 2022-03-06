@@ -120,7 +120,7 @@ app.post('/api/v1/adst', upload.single('image'), (req, res) => {
   // console.log(req.body)
     cloudinary.uploader.upload(req.file.path, function (result) {
        console.log(result.secure_url)
-      // res.send({imgurl:result.secure_url})
+       res.send({imgurl:result.secure_url})
      // Activity.UpdateWeeklyReport(req, res, result.secure_url);
      });
    });
