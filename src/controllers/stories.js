@@ -124,12 +124,12 @@ router.post('/story', upload.array('file'),  async(req, res) => {
    if (req.method === 'POST') {
         const urls = []
        const files = req.files;
-        for (const file of files) {
-          const { path } = file;
+  //      for (const file of files) {
+          const { path } = req.file;
           const newPath = await uploader(path)
           urls.push(newPath.url)
           fs.unlinkSync(path)
-        }
+    //    }
   //  console.log((req.))
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
   //  if (req.method === 'POST') {
