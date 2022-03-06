@@ -206,7 +206,7 @@ router.post('/story', upload.array('file'),  async(req, res) => {
 
 
 
-  router.post('/sto', upload.array('file',2),  async(req, res) => {
+  router.post('/sto', upload.array('file'),  async(req, res) => {
     const uploader = async (path) => await cloudinary.uploads(path, req.body.title+req.body.author);
 
 
@@ -221,35 +221,9 @@ router.post('/story', upload.array('file'),  async(req, res) => {
         }
     
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
-    
-    const createUser = `INSERT INTO
-    stories(title,author,coverurl,price,time,category)
-    VALUES ($1, $2,$3,$4,$5,$6) RETURNING *`;  
-  const values = [
-  req.body.title,
-  req.body.author,
-  urls[0],
-  req.body.price,
-  moment(new Date()),
-  req.body.category
-  ];
-  try {
-  const { rows } = await db.query(createUser, values);
-  // console.log(rows);
-  const data = {
-    status: 'success',
-    data: {
-      message: 'Movie added successfully​',
-      title: rows[0].title,
-      cover_location: rows[0].cover_location,
-      sample_location: rows[0].sample_location,
-    },
-  };
-  return res.status(201).send(data);
-  } catch (error) {
-  return res.status(400).send(error);
-  }
-  
+        res.status('200').json({
+          urls
+        })
   //  },{ resource_type: "auto", public_id: `ridafycovers/${req.body.title}` })
 
 } else {
