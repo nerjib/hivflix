@@ -130,7 +130,7 @@ router.post('/story', upload.single('file'),  async(req, res) => {
           urls.push(newPath.url)
           fs.unlinkSync(path)
         }*/
-    console.log(req)
+    console.log(JSON.stringify(req))
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
     if (req.method === 'POST') {
 
