@@ -119,16 +119,18 @@ router.post('/story', upload.single('file'),  async(req, res) => {
       console.log('ingrul: ',result.secure_url)
      // res.send({imgurl:result.secure_url})
      Activity.UpdateWeeklyReport(req, res, result.secure_url);
-    });*/
+    });
 
     if (req.method === 'POST') {
         const urls = []
-       const files = req.files;
-          const { path } = files;
+      /*  const files = req.files;
+        for (const file of files) {
+          const { path } = file;
           const newPath = await uploader(path)
           urls.push(newPath.url)
           fs.unlinkSync(path)
-    console.log('file', urls[0])
+        }*/
+    console.log(req)
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
     
     const createUser = `INSERT INTO
