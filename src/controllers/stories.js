@@ -29,6 +29,7 @@ router.get('/', async (req, res) => {
   });
 
   
+
 router.get('/:id', async (req, res) => {
     const text = 'SELECT * FROM stories left join chapters on stories.id=chapters.storyid WHERE stories.id = $1';
     // console.log(req.params.id);
@@ -111,7 +112,7 @@ router.get('/:id', async (req, res) => {
 
 
   
-router.post('/story',   async(req, res) => {
+router.post('/story', upload.array('file'),  async(req, res) => {
     const uploader = async (path) => await cloudinary.uploads(path, req.body.title+req.body.author);
 
 
@@ -133,7 +134,7 @@ router.post('/story',   async(req, res) => {
   const values = [
   req.body.title,
   req.body.author,
-  'urls[0]',
+  urls[0],
   req.body.price,
   moment(new Date()),
   req.body.category
