@@ -132,7 +132,8 @@ router.post('/story', upload.single('file'),  async(req, res) => {
         }*/
     console.log(req)
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
-    
+    if (req.method === 'POST') {
+
     const createUser = `INSERT INTO
     stories(title,author,coverurl,price,time,category)
     VALUES ($1, $2,$3,$4,$5,$6) RETURNING *`;  
