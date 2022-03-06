@@ -15,7 +15,7 @@ dotenv.config();
 
 
 router.get('/', async (req, res) => {
-    const getAllQ = 'SELECT * FROM stories left join users on stories.author=users.userid left join categories on stories.category=categories.id';
+    const getAllQ = 'SELECT stories.id as id, stories.title,categories.category_name,stories.price,users.name FROM stories left join users on stories.author=users.userid left join categories on stories.category=categories.id';
     try {
       // const { rows } = qr.query(getAllQ);
       const { rows } = await db.query(getAllQ);
@@ -130,15 +130,16 @@ router.post('/story', upload.array('file'),  async(req, res) => {
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
     
     const createUser = `INSERT INTO
-    stories(title,author,coverurl,price,time,category)
-    VALUES ($1, $2,$3,$4,$5,$6) RETURNING *`;  
+    stories(title,author,coverurl,price,time,category,description)
+    VALUES ($1, $2,$3,$4,$5,$6,$7) RETURNING *`;  
   const values = [
   req.body.title,
   req.body.author,
   urls[0],
   req.body.price,
   moment(new Date()),
-  req.body.category
+  req.body.category,
+  req.body.description
   ];
   try {
   const { rows } = await db.query(createUser, values);
@@ -209,7 +210,7 @@ router.post('/story', upload.array('file'),  async(req, res) => {
     const uploader = async (path) => await cloudinary.uploads(path, req.body.title+req.body.author);
 
 
-    
+
     if (req.method === 'POST') {
       /*  const urls = []
         const files = req.files;
