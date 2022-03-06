@@ -206,7 +206,7 @@ router.post('/story', upload.array('file'),  async(req, res) => {
 
 
 
-  router.post('/sto', upload.array('file'),  async(req, res) => {
+  router.post('/sto', upload.array('file',2),  async(req, res) => {
     const uploader = async (path) => await cloudinary.uploads(path, req.body.title+req.body.author);
 
 
@@ -260,6 +260,15 @@ router.post('/story', upload.array('file'),  async(req, res) => {
 
   });
 
+
+  route.post('/st', upload.single('image'), (req, res) => {
+    // console.log(req.body)
+      cloudinary.uploader.upload(req.file.path, function (result) {
+         console.log(result.secure_url)
+        // res.send({imgurl:result.secure_url})
+       });
+     });
+  
   
 
 module.exports = router;
