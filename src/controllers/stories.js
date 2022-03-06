@@ -261,7 +261,7 @@ router.post('/story', upload.array('file'),  async(req, res) => {
   });
 
 
-  route.post('/st', upload.single('image'), (req, res) => {
+  router.post('/st', upload.single('image'), (req, res) => {
     // console.log(req.body)
       cloudinary.uploader.upload(req.file.path, function (result) {
          console.log(result.secure_url)
