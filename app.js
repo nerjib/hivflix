@@ -120,7 +120,7 @@ app.post('/api/v1/adst', upload.single('image'), (req, res) => {
   // console.log(req.body)
   console.log(imgurl,req.file.path)
 
-  res.send({imgurl:req.file.path})
+ // res.send({imgurl:req.file.path})
 
 /*    cloudinary.uploader.upload(req.file.path, function (result) {
        console.log(result.secure_url)
