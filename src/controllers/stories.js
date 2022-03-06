@@ -111,7 +111,7 @@ router.get('/:id', async (req, res) => {
   });
 
 
-  
+
   
 router.post('/story', upload.array('file'),  async(req, res) => {
     const uploader = async (path) => await cloudinary.uploads(path, req.body.title+req.body.author);
@@ -202,5 +202,64 @@ router.post('/story', upload.array('file'),  async(req, res) => {
 
 
   });
+
+
+
+
+  router.post('/sto', upload.array('file'),  async(req, res) => {
+    const uploader = async (path) => await cloudinary.uploads(path, req.body.title+req.body.author);
+
+
+    if (req.method === 'POST') {
+        const urls = []
+        const files = req.files;
+        for (const file of files) {
+          const { path } = file;
+          const newPath = await uploader(path)
+          urls.push(newPath.url)
+          fs.unlinkSync(path)
+        }
+    
+   // cloudinary.uploader.upload(req.file.path, async (result)=> {
+    
+    const createUser = `INSERT INTO
+    stories(title,author,coverurl,price,time,category)
+    VALUES ($1, $2,$3,$4,$5,$6) RETURNING *`;  
+  const values = [
+  req.body.title,
+  req.body.author,
+  urls[0],
+  req.body.price,
+  moment(new Date()),
+  req.body.category
+  ];
+  try {
+  const { rows } = await db.query(createUser, values);
+  // console.log(rows);
+  const data = {
+    status: 'success',
+    data: {
+      message: 'Movie added successfully​',
+      title: rows[0].title,
+      cover_location: rows[0].cover_location,
+      sample_location: rows[0].sample_location,
+    },
+  };
+  return res.status(201).send(data);
+  } catch (error) {
+  return res.status(400).send(error);
+  }
+  
+  //  },{ resource_type: "auto", public_id: `ridafycovers/${req.body.title}` })
+
+} else {
+    res.status(405).json({
+      err: `${req.method} method not allowed`
+    })
+  }
+
+  });
+
+  
 
 module.exports = router;
