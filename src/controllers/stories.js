@@ -153,8 +153,6 @@ router.post('/story', upload.single('file'),  async(req, res) => {
     data: {
       message: 'Movie added successfully​',
       title: rows[0].title,
-      cover_location: rows[0].cover_location,
-      sample_location: rows[0].sample_location,
     },
   };
   return res.status(201).send(data);
