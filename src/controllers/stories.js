@@ -115,13 +115,13 @@ router.get('/:id', async (req, res) => {
 router.post('/story', upload.single('file'),  async(req, res) => {
     const uploader = async (path) => await cloudinary.uploads(path, req.body.title+req.body.author);
    
-  /* cloudinary.uploader.upload(req.file.path, function (result) {
+   cloudinary.uploader.upload(req.file.path, function (result) {
       console.log('ingrul: ',result.secure_url)
      // res.send({imgurl:result.secure_url})
-     Activity.UpdateWeeklyReport(req, res, result.secure_url);
+  //   Activity.UpdateWeeklyReport(req, res, result.secure_url);
     });
-*/
-    if (req.method === 'POST') {
+
+  /*  if (req.method === 'POST') {
         const urls = []
        const files = req.files;
         for (const file of files) {
@@ -129,10 +129,10 @@ router.post('/story', upload.single('file'),  async(req, res) => {
           const newPath = await uploader(path)
           urls.push(newPath.url)
           fs.unlinkSync(path)
-        }
+        }*/
   //  console.log((req.))
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
-   // if (req.method === 'POST') {
+    if (req.method === 'POST') {
 
     const createUser = `INSERT INTO
     stories(title,author,coverurl,price,time,category)
