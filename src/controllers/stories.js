@@ -220,6 +220,7 @@ router.post('/story', upload.array('file'),  async(req, res) => {
         }
     */
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
+     console.log('file', req.files )
         res.status('200').json({
           'urls':'r'
         })
