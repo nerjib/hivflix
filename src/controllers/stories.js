@@ -205,12 +205,12 @@ router.post('/story', upload.array('file'),  async(req, res) => {
 
 
 
-  router.post('/sto', upload.array('file'),  async(req, res) => {
+  router.post('/sto',   async(req, res) => {
     const uploader = async (path) => await cloudinary.uploads(path, req.body.title+req.body.author);
 
 
     if (req.method === 'POST') {
-        const urls = []
+      /*  const urls = []
         const files = req.files;
         for (const file of files) {
           const { path } = file;
@@ -218,10 +218,10 @@ router.post('/story', upload.array('file'),  async(req, res) => {
           urls.push(newPath.url)
           fs.unlinkSync(path)
         }
-    
+    */
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
         res.status('200').json({
-          urls
+          'urls':'r'
         })
   //  },{ resource_type: "auto", public_id: `ridafycovers/${req.body.title}` })
 
