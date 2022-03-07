@@ -92,7 +92,7 @@ const storage = multer.diskStorage({
   
   
 
-app.use('/api/v1/users',Auth.verifyToken, Users)
+app.use('/api/v1/users', Users)
 app.use('/api/v1/auth/signin', AuthSignIn)
 app.use('/api/v1/auth/signup', AuthUsers)
 app.use('/api/v1/movies', Auth.verifyToken,Movies)
