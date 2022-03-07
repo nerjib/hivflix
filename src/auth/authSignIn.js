@@ -32,6 +32,7 @@ router.post('/', async (req, res) => {
     const response = {  
       status: 'success',
       data: {
+        role: rows[0].account_role,
         token,
         userId: rows[0].userid,
         emailStatus: rows[0].emailstatus
