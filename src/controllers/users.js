@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  const text = 'SELECT * FROM users WHERE id = $1';
+  const text = 'SELECT * FROM users WHERE userid = $1';
   // console.log(req.params.id);
   try {
     const { rows } = await db.query(text, [req.params.id]);
