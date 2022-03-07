@@ -7,6 +7,9 @@ const router = express.Router();
 router.use(CokokieParser());
 const db = require('../dbs/index');
 
+router.get('tes', (req,res)=>{
+return res.status(200).send({status:'success'})
+})
 router.post('/', async (req, res) => {
   if (!req.body.email || !req.body.password) {
     return res.status(400).send({ message: 'Some values are missing' });
