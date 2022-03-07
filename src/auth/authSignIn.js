@@ -7,7 +7,7 @@ const router = express.Router();
 router.use(CokokieParser());
 const db = require('../dbs/index');
 
-router.get('tes', (req,res)=>{
+router.get('/', (req,res)=>{
 return res.status(200).send({status:'success'})
 })
 router.post('/', async (req, res) => {
