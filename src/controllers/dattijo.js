@@ -119,7 +119,7 @@ router.get('/:id', async (req, res) => {
     
     const createUser = `INSERT INTO
     dattijovideo(title,url,description,time)
-    VALUES ($1, $2,$3,$4,$5) RETURNING *`;  
+    VALUES ($1, $2,$3,$4) RETURNING *`;  
   const values = [
   req.body.title,
   req.body.url,
