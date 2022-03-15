@@ -20,6 +20,8 @@ const Ratings = require('./src/controllers/ratings')
 const Reviews = require('./src/controllers/reviews')
 const Ads = require('./src/controllers/ads')
 const Stories = require('./src/controllers/stories')
+const Dattijo = require('./src/controllers/dattijo')
+
 
 
 //const upload = require('./src/controllers/multer')
@@ -104,6 +106,8 @@ app.use('/api/v1/ratings', Auth.verifyToken,Ratings)
 app.use('/api/v1/reviews', Auth.verifyToken,Reviews)
 app.use('/api/v1/ads',Ads)
 app.use('/api/v1/stories',Stories)
+app.use('/api/v1/dattijo', Dattijo)
+
 
 
 
@@ -112,7 +116,7 @@ app.use('/api/v1/stories',Stories)
 
 
 app.get('/',(req,res)=>{
-    res.send('welcome to Hivflix')
+    res.send({message:'welcome to hivflix'})
 })
 
 

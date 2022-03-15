@@ -10,8 +10,10 @@ const client = new Client({
   ssl: {
     rejectUnauthorized: false
   }
-});
-
+});/*/
+const client = new Client({
+  connectionString: process.env.DATATYPE === 'test' ? process.env.DATABASE_URL1 : process.env.DATABASE_URL
+})*/
 client.connect();
 
 module.exports = client;
