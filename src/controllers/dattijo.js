@@ -118,7 +118,7 @@ router.get('/:id', async (req, res) => {
    // cloudinary.uploader.upload(req.file.path, async (result)=> {
     
     const createUser = `INSERT INTO
-    dattijovideo(title,url,description,time)
+    dattijovideo(title,url,description,date)
     VALUES ($1, $2,$3,$4) RETURNING *`;  
   const values = [
   req.body.title,
