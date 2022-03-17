@@ -110,7 +110,21 @@ router.get('/:id', async (req, res) => {
     }
   });
 
-
+  router.get('/news', async (req, res) => {
+    const text = 'SELECT * FROM dattinews order by newsid desc';
+    // console.log(req.params.id);
+    try {
+      const { rows } = await db.query(text);
+      if (!rows[0]) {
+        return res.status(404).send({ message: 'User not found' });
+      }
+      
+      return res.status(200).send(rows);
+    } catch (error) {
+      return res.status(400).send(error);
+    }
+  });
+ 
 
   
   router.post('/',  async(req, res) => {
@@ -147,6 +161,43 @@ router.get('/:id', async (req, res) => {
 
   });
 
-  
+  router.post('/news',  async(req, res) => {
+    
+    // cloudinary.uploader.upload(req.file.path, async (result)=> {
+     
+     const createUser = `INSERT INTO
+     dattinews(id, name, author, title,url,description,urltoimage,publishedat)
+     VALUES ($1, $2,$3,$4,$5,$6,$7,$8) RETURNING *`;  
+   const values = [
+     req.body.id,
+     req.body.name,
+    req.body.author,
+   req.body.title,
+   req.body.url,
+   req.body.description,
+   req.body.urltoimage,
+   moment(new Date())
+   ];
+   try {
+   const { rows } = await db.query(createUser, values);
+   // console.log(rows);
+   const data = {
+     status: 'success',
+     data: {
+       message: 'news added successfully​',
+       title: rows[0].title,
+      
+     },
+   };
+   return res.status(201).send(data);
+   } catch (error) {
+   return res.status(400).send(error);
+   }
+   
+   //  },{ resource_type: "auto", public_id: `ridafycovers/${req.body.title}` })
+ 
+ 
+   });
+ 
 
 module.exports = router;
