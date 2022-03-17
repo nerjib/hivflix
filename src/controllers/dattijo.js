@@ -113,16 +113,16 @@ router.get('/:id', async (req, res) => {
   router.get('/news', async (req, res) => {
     const text = 'SELECT * FROM dattinews order by newsid desc';
     // console.log(req.params.id);
-    try {
-      const { rows } = await db.query(text);
-      if (!rows[0]) {
-        return res.status(404).send({ message: 'User not found' });
+      try {
+        // const { rows } = qr.query(getAllQ);
+        const { rows } = await db.query(getAllQ);
+        return res.status(201).send(rows);
+      } catch (error) {
+        if (error.routine === '_bt_check_unique') {
+          return res.status(400).send({ message: 'movies not available' });
+        }
+        return res.status(400).send(`${error} jsh`);
       }
-      
-      return res.status(200).send(rows);
-    } catch (error) {
-      return res.status(400).send(error);
-    }
   });
  
 
