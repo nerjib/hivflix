@@ -111,7 +111,7 @@ router.get('/:id', async (req, res) => {
   });
 
   router.get('/news', async (req, res) => {
-    const text = 'SELECT * FROM dattinews order by newsid desc';
+    const text = 'SELECT * FROM dattinews';
     // console.log(req.params.id);
       try {
         // const { rows } = qr.query(getAllQ);
