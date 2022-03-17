@@ -111,11 +111,11 @@ router.get('/:id', async (req, res) => {
   });
 
   router.get('/news', async (req, res) => {
-    const text = 'SELECT * FROM dattinews';
+    const text = 'SELECT * FROM dattinews order by newsid desc';
     // console.log(req.params.id);
       try {
         // const { rows } = qr.query(getAllQ);
-        const { rows } = await db.query(getAllQ);
+        const { rows } = await db.query(text);
         return res.status(201).send(rows);
       } catch (error) {
         if (error.routine === '_bt_check_unique') {
