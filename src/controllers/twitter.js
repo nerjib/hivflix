@@ -144,11 +144,11 @@ Twitter.post('media/upload', { media_data: b64content }, function (err, data, re
 
 router.get('/', async (req, res) => {
 
-    Twitter.get('search/tweets', { q:  '#DattijoForGovernor+dattijo2023', count:1}, function(err, data, response) {
+    Twitter.get('search/tweets', { q:  '#DattijoForGovernor+dattijo2023', count:5}, function(err, data, response) {
         //res.end(response);     
             // console.log(response)
               // console.log(err)
-              return res.status(201).send(data);
+              return res.status(201).send(data.statuses);
 
             console.log(data.statuses[0].user.name)
               res.write('string id :'+data.statuses[0].id)
