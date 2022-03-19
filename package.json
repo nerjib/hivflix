@@ -32,6 +32,7 @@
     "request": "^2.88.2",
     "rn-progress-loader": "^1.0.8",
     "streamifier": "^0.1.1",
-    "supertest": "^6.2.2"
+    "supertest": "^6.2.2",
+    "twit": "^2.2.11"
   }
 }

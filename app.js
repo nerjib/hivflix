@@ -21,6 +21,8 @@ const Reviews = require('./src/controllers/reviews')
 const Ads = require('./src/controllers/ads')
 const Stories = require('./src/controllers/stories')
 const Dattijo = require('./src/controllers/dattijo')
+const Twitter = require('./src/controllers/twitter')
+
 
 
 
@@ -107,6 +109,8 @@ app.use('/api/v1/reviews', Auth.verifyToken,Reviews)
 app.use('/api/v1/ads',Ads)
 app.use('/api/v1/stories',Stories)
 app.use('/api/v1/dattijo', Dattijo)
+app.use('/api/v1/twitter', Twitter)
+
 
 
 
