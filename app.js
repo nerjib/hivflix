@@ -103,7 +103,7 @@ app.use('/api/v1/users', Users)
 app.use('/api/v1/auth/signin', AuthSignIn)
 app.use('/api/v1/auth/signup', AuthUsers)
 app.use('/api/v1/auth/dattisignup', AuthDattiUsers)
-//app.use('/api/v1/auth/dattisignin', AuthDattiSignIn)
+app.use('/api/v1/auth/dattisignin', AuthDattiSignIn)
 app.use('/api/v1/dattiusers', DattiUsers)
 
 app.use('/api/v1/movies', Auth.verifyToken,Movies)
