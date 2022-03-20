@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
   if (!Helper.isValidEmail(req.body.email)) {
     return res.status(401).send({ message: 'Please enter a valid email address' });
   }
-  const text = 'SELECT * FROM users WHERE email = $1';
+  const text = 'SELECT * FROM dattiusers WHERE email = $1';
   try {
     const { rows } = await db.query(text, [req.body.email]);
     if (!rows[0]) {
