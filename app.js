@@ -24,7 +24,7 @@ const Dattijo = require('./src/controllers/dattijo')
 const Twitter = require('./src/controllers/twitter')
 const DattiUsers = require('./src/controllers/dattiusers')
 const AuthDattiUsers = require('./src/auth/authDattiUsers')
-//const AuthDattiSignIn = require('./src/auth/authDattiSignIn')
+const AuthDattiSignIn = require('./src/auth/authDattiSignIn')
 
 
 
@@ -103,7 +103,7 @@ app.use('/api/v1/users', Users)
 app.use('/api/v1/auth/signin', AuthSignIn)
 app.use('/api/v1/auth/signup', AuthUsers)
 app.use('/api/v1/auth/dattisignup', AuthDattiUsers)
-//app.use('/api/v1/auth/dattisignin', AuthDattiSignIn)
+app.use('/api/v1/auth/dattisignin', AuthDattiSignIn)
 app.use('/api/v1/dattiusers', DattiUsers)
 
 app.use('/api/v1/movies', Auth.verifyToken,Movies)
