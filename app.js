@@ -24,7 +24,7 @@ const Dattijo = require('./src/controllers/dattijo')
 const Twitter = require('./src/controllers/twitter')
 const DattiUsers = require('./src/controllers/dattiusers')
 const AuthDattiUsers = require('./src/auth/authDattiUsers')
-const AuthDattiSignIn = require('./src/auth/authDattiUsers')
+const AuthDattiSignIn = require('./src/auth/authSignIn')
 
 
 
