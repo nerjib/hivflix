@@ -63,6 +63,29 @@ router.post('/', async (req, res) => {
   }
   
   });
- 
+
+  
+  router.post('/alltokens', async (req, res) => {
+    
+    const createUser = `INSERT INTO
+    pushtoken (token,time)
+    VALUES ($1, $2) RETURNING *`;  
+  const values = [
+  req.body.token,
+  moment(new Date())
+  ];
+  try {
+  const { rows } = await db.query(createUser, values);
+  // console.log(rows);
+  const data = {
+    status: 'success'
+  };
+  return res.status(201).send(data);
+  } catch (error) {
+  return res.status(400).send(error);
+  }
+  
+  });
+
 
 module.exports = router;
