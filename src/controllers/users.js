@@ -87,5 +87,29 @@ router.post('/', async (req, res) => {
   
   });
 
+  
+  router.put('/pushtoken', async (req, res) => {
+    
+    const createUser = `Update users set pushtoken=$1 where userid=$2
+    pushtoken (token,time)
+    VALUES ($1, $2) RETURNING *`;  
+  const values = [
+  req.body.token,
+  req.body.userid
+  ];
+  try {
+  const { rows } = await db.query(createUser, values);
+  // console.log(rows);
+  const data = {
+    status: 'success'
+  };
+  return res.status(201).send(data);
+  } catch (error) {
+  return res.status(400).send(error);
+  }
+  
+  });
+
+
 
 module.exports = router;
