@@ -90,9 +90,7 @@ router.post('/', async (req, res) => {
   
   router.put('/pushtoken', async (req, res) => {
     
-    const createUser = `Update users set pushtoken=$1 where userid=$2
-    pushtoken (token,time)
-    VALUES ($1, $2) RETURNING *`;  
+    const createUser = `Update users set pushtoken=$1 where userid=$2 RETURNING *`;  
   const values = [
   req.body.token,
   req.body.userid
