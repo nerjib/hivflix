@@ -24,7 +24,7 @@ router.put('/', async (req, res) => {
   try {
     const { rows } = await db.query(text, [req.body.winner, 0, req.body.quizid, 1, req.body.winnerid, moment(new Date())]);
   if (rows.length<1) {
-      return res.status(404).send({ message: 'Quiz has been answered' });
+      return res.status(200).send({ message: 'Quiz has been answered' });
     }
     return res.status(200).send({message:'Congratulation! you will be contacted for your prize'});
   } catch (error) {
