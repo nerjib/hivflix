@@ -22,7 +22,7 @@ router.put('/', async (req, res) => {
   const text = 'UPDATE dattiquiz set winner=$1, active=$2 WHERE id = $3 and winner is null and active=$4 returning *';
   // console.log(req.params.id);
   try {
-    const { rows } = await db.query(text, [req.params.winner, 0, req.params.quizid, 1]);
+    const { rows } = await db.query(text, [req.body.winner, 0, req.body.quizid, 1]);
   //  if (!rows[0]) {
     //  return res.status(404).send({ message: 'User not found' });
     //}
