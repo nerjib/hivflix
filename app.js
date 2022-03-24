@@ -26,6 +26,7 @@ const DattiUsers = require('./src/controllers/dattiusers')
 const AuthDattiUsers = require('./src/auth/authDattiUsers')
 const AuthDattiSignIn = require('./src/auth/authDattilogin')
 
+const Dattiquiz = require('./src/controllers/dattiquiz')
 
 
 
@@ -117,6 +118,8 @@ app.use('/api/v1/ads',Ads)
 app.use('/api/v1/stories',Stories)
 app.use('/api/v1/dattijo', Dattijo)
 app.use('/api/v1/twitter', Twitter)
+app.use('/api/v1/quiz', Dattiquiz)
+
 
 
 
