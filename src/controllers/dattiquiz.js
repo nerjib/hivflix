@@ -19,10 +19,10 @@ router.get('/', async (req, res) => {
 });
 
 router.put('/', async (req, res) => {
-  const text = 'UPDATE dattiquiz set winner=$1, winnerid=$5, anstime=$6 WHERE id = $3 and winner is null and active=$4 returning *';
+  const text = 'UPDATE dattiquiz set winner=$1,  winnerid=$3, anstime=$4 WHERE id = $2 and winner is null  returning *';
   // console.log(req.params.id);
   try {
-    const { rows } = await db.query(text, [req.body.winner, 0, req.body.quizid, 1, req.body.winnerid, moment(new Date())]);
+    const { rows } = await db.query(text, [req.body.winner, req.body.quizid,  req.body.winnerid, moment(new Date())]);
   if (rows.length<1) {
       return res.status(200).send({ message: 'Quiz has already been answered, nice attempt' });
     }
