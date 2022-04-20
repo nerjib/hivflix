@@ -26,7 +26,7 @@ const DattiUsers = require('./src/controllers/dattiusers')
 const AuthDattiUsers = require('./src/auth/authDattiUsers')
 const AuthDattiSignIn = require('./src/auth/authDattilogin')
 const AuthFulusSignIn = require('./src/auth/authFulusignin')
-const AuthFulusUsers = require('./src/auth/authFulusUsers')
+//const AuthFulusUsers = require('./src/auth/authFulusUsers')
 
 
 const Dattiquiz = require('./src/controllers/dattiquiz')
@@ -110,7 +110,7 @@ app.use('/api/v1/auth/signin', AuthSignIn)
 app.use('/api/v1/auth/signup', AuthUsers)
 app.use('/api/v1/auth/dattisignup', AuthDattiUsers)
 app.use('/api/v1/auth/dattisignin', AuthDattiSignIn)
-app.use('/api/v1/auth/fulussignup', AuthFulusUsers) 
+//app.use('/api/v1/auth/fulussignup', AuthFulusUsers) 
 app.use('/api/v1/auth/fulussignin', AuthFulusSignIn)
 app.use('/api/v1/dattiusers', DattiUsers)
 
