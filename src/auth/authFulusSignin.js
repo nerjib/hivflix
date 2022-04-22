@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
         role: rows[0].account_role,
         token,
         userId: rows[0].userid,
-        accountId: rows[0].accountId,
+        accountId: rows[0].accountid,
         emailStatus: rows[0].emailstatus
       },
     };
