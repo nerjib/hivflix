@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/id', async (req, res) => {
-  const text = `select * from fulususers where phone_no like '123%' limit 1`;
+router.get('/:id', async (req, res) => {
+  const text = `select * from fulususers where phone_no like ${req.params.id}% limit 1`;
   // console.log(req.params.id);
 
   try {
