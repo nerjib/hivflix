@@ -19,11 +19,11 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  const text = `select * from fulususers where phone_no like ${req.params.id}% limit 1`;
+  const text = `select * from fulususers where phone_no like $1% limit 1`;
   // console.log(req.params.id);
 
   try {
-    const { rows } = await db.query(text);
+    const { rows } = await db.query(text,[req.params.id]);
     if (!rows[0]) {
       return res.status(404).send({ message: 'User not found' });
     }
