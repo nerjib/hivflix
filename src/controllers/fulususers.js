@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   let search = req.params.id;
-  const text = `select * from fulususers where phone_no like ${search} limit 1`;
+  const text = `select * from fulususers where phone_no like '${search}' limit 1`;
   // console.log(req.params.id);
 
   try {
