@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/id', async (req, res) => {
-  const text = `SELECT * FROM fulususers WHERE phone_no LIKE %23`;
+  const text = `select * from fulususers where phone_no like '123%' limit 1`;
   // console.log(req.params.id);
 
   try {
