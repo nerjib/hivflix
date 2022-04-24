@@ -5,7 +5,7 @@ const router = express.Router();
 const db = require('../dbs/index');
 
 router.get('/', async (req, res) => {
-  const getAllQ = 'SELECT * FROM fulususers';
+  const getAllQ = 'SELECT name, phone_no FROM fulususers';
   try {
     // const { rows } = qr.query(getAllQ);
     const { rows } = await db.query(getAllQ);
@@ -23,7 +23,7 @@ router.get('/:id', async (req, res) => {
   // console.log(req.params.id);
 
   try {
-    const { rows } = await db.query(text, [req.params.id]);
+    const { rows } = await db.query(text);
     if (!rows[0]) {
       return res.status(404).send({ message: 'User not found' });
     }
