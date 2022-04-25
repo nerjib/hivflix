@@ -18,6 +18,12 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.post('/webhook', async (req, res) => {
+ console.log(req.body)
+    return res.status(200).send('weebhook');
+ 
+});
+
 router.get('/:id', async (req, res) => {
   let search = req.params.id;
   const text = `select * from fulususers where phone_no like '%${req.params.id}' limit 1`;
