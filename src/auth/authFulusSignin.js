@@ -30,6 +30,7 @@ router.post('/', async (req, res) => {
       status: 'success',
       data: {
         role: rows[0].account_role,
+        customer: rows[0].name,
         token,
         userId: rows[0].userid,
         accountId: rows[0].accountid,
