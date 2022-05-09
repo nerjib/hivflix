@@ -28,7 +28,7 @@ const AuthDattiSignIn = require('./src/auth/authDattilogin')
 const AuthFulusSignIn = require('./src/auth/authFulusSignin')
 const AuthFulusUsers = require('./src/auth/authFulusUser')
 const HairidityClient = require('./src/controllers/hairidity/clients')
-
+const HairidityBookings = require('./src/controllers/hairidity/bookings')
 const Dattiquiz = require('./src/controllers/dattiquiz')
 const Fulus = require('./src/controllers/fulususers')
 
@@ -128,6 +128,8 @@ app.use('/api/v1/twitter', Twitter)
 app.use('/api/v1/quiz', Dattiquiz)
 app.use('/api/v1/fulus', Fulus)
 app.use('/api/v1/hairidityclient', HairidityClient)
+app.use('/api/v1/hairiditybookings', HairidityBookings)
+
 
 
 
