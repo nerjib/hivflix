@@ -38,15 +38,20 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     
     const createUser = `INSERT INTO
-    hairiditybarbers (name,img,state,city,address)
-    VALUES ($1,$2,$3,$4,$5) RETURNING *`;  
+    hairiditybarbers (name,img,state,city,address,rating,status,category,longitude,latitude)
+    VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) RETURNING *`;  
   const values = [
   req.body.name,
   req.body.img||'',
   req.body.state,
     req.body.city,
     req.body.address,
-  ];
+    req.body.rating||0,
+       req.body.status,
+    req.body.category,
+    req.body.longitude,
+    req.body.latitude,
+    ];
   try {
   const { rows } = await db.query(createUser, values);
   // console.log(rows);
