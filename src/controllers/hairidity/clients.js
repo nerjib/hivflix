@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  const text = 'SELECT * FROM hairiditybarbers WHERE id = $1';
+  const text = 'SELECT * FROM hairidityusers WHERE id = $1';
   // console.log(req.params.id);
   try {
     const { rows } = await db.query(text, [req.params.id]);
@@ -79,76 +79,5 @@ router.post('/', async (req, res) => {
   
   });
 
-  router.update('/vendor/:id', async (req, res) => {
-    const createQuery = `UPDATE hairidityusers set status=$1, latitude=$2, longitude=$3, updated_at=$4 WHERE id=$5 RETURNING *`;
-     const values = [
-  req.body.status,
-  req.body.latitude,
-  req.body.longitude,
-  moment(new Date()),
-    req.params.id
-  ];
-  
-    try {
-      const { rows } = await db.query(createQuery, values);
-      const token = Helper.generateToken(rows[0].id,'user');
-  
-      const response = {
-        status: 'success',
-        data: {
-          message: 'User account successfully created waiting for email cofirmation',
-          token,
-          userId: rows[0].id,
-        },
-      };
-      await   main(req.body.email )
-  
-      return res.status(201).send(response);
-    } catch (error) {
-      if (error.routine === '_bt_check_unique') {
-        return res.status(404).send({ message: 'User with that username already exist' });
-      }
-      return res.status(400).send(error);
-    }
-  });
-  
-
-  router.update('/vendordata/:id', async (req, res) => {
-    const createQuery = `UPDATE hairidityusers set status=$1, latitude=$2, longitude=$3, updated_at=$4, state =$5, city=$6, address= $7, nin=$8, bvn =$9  WHERE id=$10 RETURNING *`;
-     const values = [
-  req.body.status,
-  req.body.latitude,
-  req.body.longitude,
-  moment(new Date()),
-    req.body.state,
-    req.body.city,
-    req.body.address,
-    req.body.nin,
-    req.body.bvn,
-    req.params.id
-  ];
-  
-    try {
-      const { rows } = await db.query(createQuery, values);
-      const token = Helper.generateToken(rows[0].id,'user');
-  
-      const response = {
-        status: 'success',
-        data: {
-          message: 'User account successfully created waiting for email cofirmation',
-          token,
-          userId: rows[0].id,
-        },
-      };
-      await   main(req.body.email )
-  
-      return res.status(201).send(response);
-    } catch (error) {
-      if (error.routine === '_bt_check_unique') {
-        return res.status(404).send({ message: 'User with that username already exist' });
-      }
-      return res.status(400).send(error);
-    }
-  });
 
 module.exports = router;
