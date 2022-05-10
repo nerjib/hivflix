@@ -32,6 +32,8 @@ const HairidityBookings = require('./src/controllers/hairidity/bookings')
 const Dattiquiz = require('./src/controllers/dattiquiz')
 const Fulus = require('./src/controllers/fulususers')
 
+const AuthHairiditySignIn = require('./src/controllers/hairidity/signIn')
+const AuthHairidityUsers = require('./src/controllers/hairidity/signUp')
 
 
 
@@ -129,6 +131,8 @@ app.use('/api/v1/quiz', Dattiquiz)
 app.use('/api/v1/fulus', Fulus)
 app.use('/api/v1/hairidityclient', HairidityClient)
 app.use('/api/v1/hairiditybookings', HairidityBookings)
+app.use('/api/v1/auth/hairiditysignin', AuthHairiditySignIn)
+app.use('/api/v1/auth/hairiditysignup', AuthHairidityUsers)
 
 
 
