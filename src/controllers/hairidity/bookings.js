@@ -82,7 +82,7 @@ router.post('/', async (req, res) => {
   
   });
 
-  router.update('/cancel/:id', async (req, res) => {
+  router.put('/cancel/:id', async (req, res) => {
     
     const createUser = `UPDATE
     hairiditybookings set status=$1, updated_at=$2 where id=$3 RETURNING *`;  
