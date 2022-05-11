@@ -82,6 +82,35 @@ router.post('/', async (req, res) => {
   
   });
 
+  router.update('/cancel/:id', async (req, res) => {
+    
+    const createUser = `UPDATE
+    hairiditybookings set status=$1, updated_at=$2 where id=$3 RETURNING *`;  
+  const values = [
+  'cancelled',
+    moment(new Date()),
+    req.params.id
+  ];
+  try {
+  const { rows } = await db.query(createUser, values);
+  // console.log(rows);
+  const data = {
+    status: 'success',
+    data: {
+      message: 'book added to cart successfully​',
+      User_id: rows[0].user_id,
+      Book_id: rows[0].movie_id,
+    },
+  };
+  return res.status(201).send(data);
+  } catch (error) {
+  return res.status(400).send(error);
+  }
+  
+  });
+
+
+
   router.delete('/remove/:movieid/:userid', async (req, res) => {
     
     const createUser = `DELETE  FROM
